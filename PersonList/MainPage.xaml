@@ -5,9 +5,19 @@
     xmlns:local="using:PersonList"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{StaticResource ViewModel}"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="500">
 
-    </Grid>
+        <TextBlock Text="{Binding PersonLocation, Mode=OneWay}"/>
+        <ListBox  ItemsSource="{Binding PersonList}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Command="{Binding GetLocationIn3SecCommand, Mode=OneWay}">Get Location in 3sec</Button>
+    </StackPanel>
 </Page>
